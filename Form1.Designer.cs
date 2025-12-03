@@ -1,4 +1,4 @@
-﻿namespace AutodjaOmanikud
+namespace AutodjaOmanikud
 {
     partial class Autoteenindus
     {
@@ -30,8 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Autoteenindus));
             tabPage3 = new TabPage();
+            label8 = new Label();
+            searchtextbox = new TextBox();
             label13 = new Label();
-            cbtime = new DateTimePicker();
+            datetimepickertime = new DateTimePicker();
             label11 = new Label();
             cbauto = new ComboBox();
             label7 = new Label();
@@ -80,8 +82,10 @@
             // tabPage3
             // 
             tabPage3.BackColor = Color.LavenderBlush;
+            tabPage3.Controls.Add(label8);
+            tabPage3.Controls.Add(searchtextbox);
             tabPage3.Controls.Add(label13);
-            tabPage3.Controls.Add(cbtime);
+            tabPage3.Controls.Add(datetimepickertime);
             tabPage3.Controls.Add(label11);
             tabPage3.Controls.Add(cbauto);
             tabPage3.Controls.Add(label7);
@@ -100,28 +104,45 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Service";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(615, 162);
+            label8.Name = "label8";
+            label8.Size = new Size(71, 15);
+            label8.TabIndex = 15;
+            label8.Text = "Auto otsing";
+            // 
+            // searchtextbox
+            // 
+            searchtextbox.BackColor = Color.WhiteSmoke;
+            searchtextbox.Location = new Point(599, 180);
+            searchtextbox.Name = "searchtextbox";
+            searchtextbox.Size = new Size(100, 23);
+            searchtextbox.TabIndex = 14;
+            // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Location = new Point(307, 138);
             label13.Name = "label13";
-            label13.Size = new Size(107, 15);
+            label13.Size = new Size(110, 15);
             label13.TabIndex = 13;
             label13.Text = "Töö lõppemise aeg";
             // 
-            // cbtime
+            // datetimepickertime
             // 
-            cbtime.Location = new Point(418, 132);
-            cbtime.Name = "cbtime";
-            cbtime.Size = new Size(121, 23);
-            cbtime.TabIndex = 11;
+            datetimepickertime.Location = new Point(418, 132);
+            datetimepickertime.Name = "datetimepickertime";
+            datetimepickertime.Size = new Size(121, 23);
+            datetimepickertime.TabIndex = 11;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Location = new Point(379, 106);
             label11.Name = "label11";
-            label11.Size = new Size(33, 15);
+            label11.Size = new Size(34, 15);
             label11.TabIndex = 10;
             label11.Text = "Auto";
             // 
@@ -139,7 +160,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(362, 80);
             label7.Name = "label7";
-            label7.Size = new Size(71, 15);
+            label7.Size = new Size(76, 15);
             label7.TabIndex = 8;
             label7.Text = "Service hind";
             // 
@@ -148,15 +169,15 @@
             label6.AutoSize = true;
             label6.Location = new Point(348, 53);
             label6.Name = "label6";
-            label6.Size = new Size(85, 15);
+            label6.Size = new Size(93, 15);
             label6.TabIndex = 7;
             label6.Text = "Service pealkiri";
             // 
             // btnClearService
             // 
-            btnClearService.Location = new Point(6, 138);
+            btnClearService.Location = new Point(6, 127);
             btnClearService.Name = "btnClearService";
-            btnClearService.Size = new Size(105, 30);
+            btnClearService.Size = new Size(102, 23);
             btnClearService.TabIndex = 6;
             btnClearService.Text = "Clear service";
             btnClearService.UseVisualStyleBackColor = true;
@@ -164,7 +185,7 @@
             // 
             // btnDeleteService
             // 
-            btnDeleteService.Location = new Point(3, 109);
+            btnDeleteService.Location = new Point(3, 98);
             btnDeleteService.Name = "btnDeleteService";
             btnDeleteService.Size = new Size(105, 23);
             btnDeleteService.TabIndex = 5;
@@ -174,7 +195,7 @@
             // 
             // btnUpdateService
             // 
-            btnUpdateService.Location = new Point(6, 80);
+            btnUpdateService.Location = new Point(3, 72);
             btnUpdateService.Name = "btnUpdateService";
             btnUpdateService.Size = new Size(105, 23);
             btnUpdateService.TabIndex = 4;
@@ -184,12 +205,14 @@
             // 
             // btnAddService
             // 
-            btnAddService.Location = new Point(6, 51);
+            btnAddService.BackColor = Color.Transparent;
+            btnAddService.ForeColor = SystemColors.ControlText;
+            btnAddService.Location = new Point(3, 44);
             btnAddService.Name = "btnAddService";
             btnAddService.Size = new Size(105, 23);
             btnAddService.TabIndex = 3;
             btnAddService.Text = "Lisa service";
-            btnAddService.UseVisualStyleBackColor = true;
+            btnAddService.UseVisualStyleBackColor = false;
             btnAddService.Click += btnAddService_Click;
             // 
             // txtServicePrice
@@ -212,9 +235,9 @@
             // 
             dgvServices.BackgroundColor = Color.Snow;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvServices.Location = new Point(6, 174);
+            dgvServices.Location = new Point(6, 209);
             dgvServices.Name = "dgvServices";
-            dgvServices.Size = new Size(589, 218);
+            dgvServices.Size = new Size(693, 183);
             dgvServices.TabIndex = 0;
             // 
             // tabPage2
@@ -245,7 +268,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(336, 122);
             label5.Name = "label5";
-            label5.Size = new Size(76, 15);
+            label5.Size = new Size(78, 15);
             label5.TabIndex = 12;
             label5.Text = "Auto omanik";
             // 
@@ -254,7 +277,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(310, 96);
             label4.Name = "label4";
-            label4.Size = new Size(123, 15);
+            label4.Size = new Size(132, 15);
             label4.TabIndex = 11;
             label4.Text = "Registreerimisnumber";
             // 
@@ -263,7 +286,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(356, 68);
             label3.Name = "label3";
-            label3.Size = new Size(70, 15);
+            label3.Size = new Size(72, 15);
             label3.TabIndex = 10;
             label3.Text = "Auto mudel";
             // 
@@ -272,7 +295,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(356, 39);
             label2.Name = "label2";
-            label2.Size = new Size(63, 15);
+            label2.Size = new Size(66, 15);
             label2.TabIndex = 9;
             label2.Text = "Auto mark";
             // 
@@ -353,14 +376,15 @@
             // 
             dgvCars.BackgroundColor = Color.Snow;
             dgvCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCars.Location = new Point(6, 158);
+            dgvCars.Location = new Point(6, 183);
             dgvCars.Name = "dgvCars";
-            dgvCars.Size = new Size(548, 234);
+            dgvCars.Size = new Size(693, 209);
             dgvCars.TabIndex = 0;
             // 
             // tabPage1
             // 
             tabPage1.BackColor = Color.LavenderBlush;
+            tabPage1.BackgroundImageLayout = ImageLayout.Zoom;
             tabPage1.Controls.Add(Telefoninumber);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(txtOwnerPhone);
@@ -370,6 +394,7 @@
             tabPage1.Controls.Add(btnDeleteOwner);
             tabPage1.Controls.Add(btnUpdateOwner);
             tabPage1.Controls.Add(btnAddOwner);
+            tabPage1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 186);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -382,7 +407,7 @@
             Telefoninumber.AutoSize = true;
             Telefoninumber.Location = new Point(342, 83);
             Telefoninumber.Name = "Telefoninumber";
-            Telefoninumber.Size = new Size(91, 15);
+            Telefoninumber.Size = new Size(96, 15);
             Telefoninumber.TabIndex = 8;
             Telefoninumber.Text = "Telefoninumber";
             // 
@@ -415,14 +440,14 @@
             // 
             dgvOwners.BackgroundColor = Color.Snow;
             dgvOwners.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvOwners.Location = new Point(6, 162);
+            dgvOwners.Location = new Point(6, 185);
             dgvOwners.Name = "dgvOwners";
-            dgvOwners.Size = new Size(561, 230);
+            dgvOwners.Size = new Size(693, 207);
             dgvOwners.TabIndex = 4;
             // 
             // btnClearOwner
             // 
-            btnClearOwner.Location = new Point(6, 133);
+            btnClearOwner.Location = new Point(3, 120);
             btnClearOwner.Name = "btnClearOwner";
             btnClearOwner.Size = new Size(101, 23);
             btnClearOwner.TabIndex = 3;
@@ -432,7 +457,7 @@
             // 
             // btnDeleteOwner
             // 
-            btnDeleteOwner.Location = new Point(6, 104);
+            btnDeleteOwner.Location = new Point(3, 91);
             btnDeleteOwner.Name = "btnDeleteOwner";
             btnDeleteOwner.Size = new Size(101, 23);
             btnDeleteOwner.TabIndex = 2;
@@ -442,9 +467,11 @@
             // 
             // btnUpdateOwner
             // 
-            btnUpdateOwner.Location = new Point(6, 75);
+            btnUpdateOwner.BackgroundImage = (Image)resources.GetObject("btnUpdateOwner.BackgroundImage");
+            btnUpdateOwner.BackgroundImageLayout = ImageLayout.Center;
+            btnUpdateOwner.Location = new Point(0, 62);
             btnUpdateOwner.Name = "btnUpdateOwner";
-            btnUpdateOwner.Size = new Size(101, 23);
+            btnUpdateOwner.Size = new Size(104, 23);
             btnUpdateOwner.TabIndex = 1;
             btnUpdateOwner.Text = "Uuenda omanik";
             btnUpdateOwner.UseVisualStyleBackColor = true;
@@ -452,7 +479,7 @@
             // 
             // btnAddOwner
             // 
-            btnAddOwner.Location = new Point(6, 46);
+            btnAddOwner.Location = new Point(3, 33);
             btnAddOwner.Name = "btnAddOwner";
             btnAddOwner.Size = new Size(101, 23);
             btnAddOwner.TabIndex = 0;
@@ -465,6 +492,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
+            tabControl1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 186);
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -532,6 +560,8 @@
         private Button btnAddOwner;
         private TabControl tabControl1;
         private Label label13;
-        private DateTimePicker cbtime;
+        private DateTimePicker datetimepickertime;
+        private Label label8;
+        private TextBox searchtextbox;
     }
 }
