@@ -1,4 +1,4 @@
-﻿using AutodjaOmanikud;
+using AutodjaOmanikud;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;
@@ -15,7 +15,7 @@ namespace AutodjaOmanikud
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=AutoDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=AutoDatabase;Trusted_Connection=True;");
             }
         }
 
