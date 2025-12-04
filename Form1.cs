@@ -11,18 +11,16 @@ namespace AutodjaOmanikud
         {
             InitializeComponent();
 
-            // Загружаем данные при старте
             LoadOwners();
             LoadCars();
+            LoadServiceOwners();
             LoadServices();
-            LoadServiceComboboxes();
 
-            // Обработчики кликов по таблицам
             dgvOwners.CellClick += DgvOwners_CellClick;
             dgvCars.CellClick += DgvCars_CellClick;
             dgvServices.CellClick += DgvServices_CellClick;
-            searchtextbox.TextChanged += (s, e) => LoadServices(searchtextbox.Text);
 
+            searchtextbox.TextChanged += (s, e) => LoadServices(searchtextbox.Text);
         }
 
         // =================== Owners ===================
@@ -36,7 +34,7 @@ namespace AutodjaOmanikud
                     o.Id,
                     o.FullName,
                     o.Phone,
-                    Cars = string.Join(", ", o.Cars.Select(c => c.Brand))
+                    Cars = string.Join(", ", o.Cars.Select(c => c.Brand + " " + c.Model))
                 }).ToList();
         }
 
@@ -55,16 +53,33 @@ namespace AutodjaOmanikud
 
         private void btnAddOwner_Click(object sender, EventArgs e)
         {
+            string fullName = txtOwnerFullName.Text.Trim();
+            string phone = txtOwnerPhone.Text.Trim();
+            if (string.IsNullOrEmpty(fullName)) return;
+
             using var context = new AutoDbContext();
-            context.Owners.Add(new Owner
+
+            // Проверяем, есть ли уже владелец с таким именем
+            var existingOwner = context.Owners.FirstOrDefault(o => o.FullName == fullName);
+
+            if (existingOwner == null)
             {
-                FullName = txtOwnerFullName.Text,
-                Phone = txtOwnerPhone.Text
-            });
+                context.Owners.Add(new Owner
+                {
+                    FullName = fullName,
+                    Phone = phone
+                });
+            }
+            else
+            {
+                existingOwner.Phone = phone; // Обновляем телефон
+            }
+
             context.SaveChanges();
             ClearOwnerFields();
             LoadOwners();
             LoadCars();
+            LoadServiceOwners();
         }
 
         private void btnUpdateOwner_Click(object sender, EventArgs e)
@@ -75,13 +90,14 @@ namespace AutodjaOmanikud
             var owner = context.Owners.Find(ownerId);
             if (owner != null)
             {
-                owner.FullName = txtOwnerFullName.Text;
-                owner.Phone = txtOwnerPhone.Text;
+                owner.FullName = txtOwnerFullName.Text.Trim();
+                owner.Phone = txtOwnerPhone.Text.Trim();
                 context.SaveChanges();
             }
             ClearOwnerFields();
             LoadOwners();
             LoadCars();
+            LoadServiceOwners();
         }
 
         private void btnDeleteOwner_Click(object sender, EventArgs e)
@@ -100,6 +116,7 @@ namespace AutodjaOmanikud
             ClearOwnerFields();
             LoadOwners();
             LoadCars();
+            LoadServiceOwners();
         }
 
         private void btnClearOwner_Click(object sender, EventArgs e)
@@ -151,17 +168,16 @@ namespace AutodjaOmanikud
             using var context = new AutoDbContext();
             context.Cars.Add(new Car
             {
-                Brand = txtCarBrand.Text,
-                Model = txtCarModel.Text,
-                RegistrationNumber = txtCarRegNumber.Text,
+                Brand = txtCarBrand.Text.Trim(),
+                Model = txtCarModel.Text.Trim(),
+                RegistrationNumber = txtCarRegNumber.Text.Trim(),
                 OwnerId = (int)cmbCarOwner.SelectedValue
             });
             context.SaveChanges();
             ClearCarFields();
             LoadCars();
             LoadOwners();
-            LoadServiceComboboxes();
-
+            LoadServiceOwners();
         }
 
         private void btnUpdateCar_Click(object sender, EventArgs e)
@@ -172,16 +188,16 @@ namespace AutodjaOmanikud
             var car = context.Cars.Find(carId);
             if (car != null)
             {
-                car.Brand = txtCarBrand.Text;
-                car.Model = txtCarModel.Text;
-                car.RegistrationNumber = txtCarRegNumber.Text;
+                car.Brand = txtCarBrand.Text.Trim();
+                car.Model = txtCarModel.Text.Trim();
+                car.RegistrationNumber = txtCarRegNumber.Text.Trim();
                 car.OwnerId = (int)cmbCarOwner.SelectedValue;
                 context.SaveChanges();
             }
             ClearCarFields();
             LoadCars();
             LoadOwners();
-            LoadServiceComboboxes();
+            LoadServiceOwners();
         }
 
         private void btnDeleteCar_Click(object sender, EventArgs e)
@@ -198,7 +214,7 @@ namespace AutodjaOmanikud
             ClearCarFields();
             LoadCars();
             LoadOwners();
-            LoadServiceComboboxes();
+            LoadServiceOwners();
         }
 
         private void btnClearCar_Click(object sender, EventArgs e)
@@ -207,66 +223,91 @@ namespace AutodjaOmanikud
         }
 
         // =================== Services ===================
-        private void LoadServiceComboboxes()
+        private void LoadServiceOwners()
         {
             using var context = new AutoDbContext();
-            cbauto.DataSource = context.Cars.ToList();
-            cbauto.DisplayMember = "Brand"; // Можно добавить модель через $"{Brand} {Model}"
-            cbauto.ValueMember = "Id";
+            var owners = context.Owners.ToList();
 
-            datetimepickertime.Format = DateTimePickerFormat.Custom;
-            datetimepickertime.CustomFormat = "HH:mm dd.MM.yyyy";
-            datetimepickertime.ShowUpDown = true;
+            cmbServiceOwner.SelectedIndexChanged -= CmbServiceOwner_SelectedIndexChanged;
+            cmbServiceOwner.DataSource = owners;
+            cmbServiceOwner.DisplayMember = "FullName";
+            cmbServiceOwner.ValueMember = "Id";
+            cmbServiceOwner.SelectedIndex = -1;
+            cmbServiceOwner.SelectedIndexChanged += CmbServiceOwner_SelectedIndexChanged;
+
+            cbauto.DataSource = null; // пока нет выбранного владельца
+        }
+
+        private void CmbServiceOwner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbServiceOwner.SelectedValue == null) return;
+
+            int ownerId = (int)cmbServiceOwner.SelectedValue;
+            using var context = new AutoDbContext();
+            var cars = context.Cars
+                .Where(c => c.OwnerId == ownerId)
+                .Select(c => new { c.Id, DisplayName = $"{c.Brand} {c.Model} ({c.RegistrationNumber})" })
+                .ToList();
+
+            cbauto.DataSource = cars;
+            cbauto.DisplayMember = "DisplayName";
+            cbauto.ValueMember = "Id";
+            cbauto.SelectedIndex = -1;
         }
 
         private void LoadServices(string search = "")
         {
-            using (var context = new AutoDbContext())
+            using var context = new AutoDbContext();
+            var query = context.Services.Include(s => s.Car).ThenInclude(c => c.Owner).AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
             {
-                var query = context.Services
-                    .Include(s => s.Car)
-                    .AsQueryable();
-
-                if (!string.IsNullOrWhiteSpace(search))
-                {
-                    search = search.ToLower();
-                    query = query.Where(s =>
-                        s.Car.Brand.ToLower().Contains(search) ||
-                        s.Car.Model.ToLower().Contains(search) ||
-                        s.Name.ToLower().Contains(search)
-                    );
-                }
-
-                dgvServices.DataSource = query
-                    .Select(s => new
-                    {
-                        s.Id,
-                        s.Name,
-                        s.Price,
-                        Car = s.Car.Brand + " " + s.Car.Model,
-                        FinishTime = s.Time.ToString("HH:mm dd.MM.yyyy")
-                    })
-                    .ToList();
+                search = search.ToLower();
+                query = query.Where(s =>
+                    s.Car.Brand.ToLower().Contains(search) ||
+                    s.Car.Model.ToLower().Contains(search) ||
+                    s.Car.RegistrationNumber.ToLower().Contains(search) ||
+                    s.Name.ToLower().Contains(search) ||
+                    s.Car.Owner.FullName.ToLower().Contains(search)
+                );
             }
-        }
 
+            dgvServices.DataSource = query
+                .Select(s => new
+                {
+                    s.Id,
+                    s.Name,
+                    s.Price,
+                    Car = s.Car.Brand + " " + s.Car.Model + " (" + s.Car.RegistrationNumber + ")",
+                    Owner = s.Car.Owner.FullName,
+                    s.CarId,
+                    FinishTime = s.Time.ToString("HH:mm dd.MM.yyyy")
+                })
+                .ToList();
+        }
 
         private void ClearServiceFields()
         {
             txtServiceName.Clear();
             txtServicePrice.Clear();
             cbauto.SelectedIndex = -1;
+            cmbServiceOwner.SelectedIndex = -1;
             datetimepickertime.Value = DateTime.Now;
         }
 
         private void DgvServices_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvServices.CurrentRow == null) return;
+
             txtServiceName.Text = dgvServices.CurrentRow.Cells["Name"].Value.ToString();
             txtServicePrice.Text = dgvServices.CurrentRow.Cells["Price"].Value.ToString();
 
-            string carName = dgvServices.CurrentRow.Cells["Car"].Value.ToString();
-            cbauto.SelectedIndex = cbauto.FindStringExact(carName.Split(' ')[0]);
+            int carId = (int)dgvServices.CurrentRow.Cells["CarId"].Value;
+
+            using var context = new AutoDbContext();
+            var car = context.Cars.Include(c => c.Owner).First(c => c.Id == carId);
+            cmbServiceOwner.SelectedValue = car.OwnerId;
+            cbauto.SelectedValue = carId;
 
             if (DateTime.TryParse(dgvServices.CurrentRow.Cells["FinishTime"].Value.ToString(), out DateTime dt))
                 datetimepickertime.Value = dt;
@@ -275,15 +316,17 @@ namespace AutodjaOmanikud
         private void btnAddService_Click(object sender, EventArgs e)
         {
             if (cbauto.SelectedValue == null) return;
+
             using var context = new AutoDbContext();
             context.Services.Add(new Service
             {
-                Name = txtServiceName.Text,
+                Name = txtServiceName.Text.Trim(),
                 Price = decimal.Parse(txtServicePrice.Text),
                 CarId = (int)cbauto.SelectedValue,
                 Time = datetimepickertime.Value
             });
             context.SaveChanges();
+
             ClearServiceFields();
             LoadServices();
         }
@@ -291,17 +334,19 @@ namespace AutodjaOmanikud
         private void btnUpdateService_Click(object sender, EventArgs e)
         {
             if (dgvServices.CurrentRow == null || cbauto.SelectedValue == null) return;
+
             int serviceId = Convert.ToInt32(dgvServices.CurrentRow.Cells["Id"].Value);
             using var context = new AutoDbContext();
             var service = context.Services.Find(serviceId);
             if (service != null)
             {
-                service.Name = txtServiceName.Text;
+                service.Name = txtServiceName.Text.Trim();
                 service.Price = decimal.Parse(txtServicePrice.Text);
                 service.CarId = (int)cbauto.SelectedValue;
                 service.Time = datetimepickertime.Value;
                 context.SaveChanges();
             }
+
             ClearServiceFields();
             LoadServices();
         }
@@ -309,6 +354,7 @@ namespace AutodjaOmanikud
         private void btnDeleteService_Click(object sender, EventArgs e)
         {
             if (dgvServices.CurrentRow == null) return;
+
             int serviceId = Convert.ToInt32(dgvServices.CurrentRow.Cells["Id"].Value);
             using var context = new AutoDbContext();
             var service = context.Services.Find(serviceId);
@@ -317,6 +363,7 @@ namespace AutodjaOmanikud
                 context.Services.Remove(service);
                 context.SaveChanges();
             }
+
             ClearServiceFields();
             LoadServices();
         }
@@ -325,6 +372,5 @@ namespace AutodjaOmanikud
         {
             ClearServiceFields();
         }
-
     }
 }
