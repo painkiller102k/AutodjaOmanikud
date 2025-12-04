@@ -1,4 +1,4 @@
-﻿using AutodjaOmanikud;
+using AutodjaOmanikud;
 
 namespace AutodjaOmanikud
 {
@@ -11,6 +11,8 @@ namespace AutodjaOmanikud
 
         public int OwnerId { get; set; }
         public Owner Owner { get; set; }
+
+       public string DisplayName => $"{Brand} {Model} ({RegistrationNumber})";
 
     }
 }
