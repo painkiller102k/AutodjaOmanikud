@@ -30,20 +30,18 @@ namespace AutodjaOmanikud
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Autoteenindus));
             tabPage3 = new TabPage();
+            cbteenus = new ComboBox();
+            label6 = new Label();
+            cmbServiceOwner = new ComboBox();
             label8 = new Label();
             searchtextbox = new TextBox();
             label13 = new Label();
             datetimepickertime = new DateTimePicker();
             label11 = new Label();
             cbauto = new ComboBox();
-            label7 = new Label();
-            label6 = new Label();
             btnClearService = new Button();
             btnDeleteService = new Button();
-            btnUpdateService = new Button();
             btnAddService = new Button();
-            txtServicePrice = new TextBox();
-            txtServiceName = new TextBox();
             dgvServices = new DataGridView();
             tabPage2 = new TabPage();
             label5 = new Label();
@@ -60,6 +58,7 @@ namespace AutodjaOmanikud
             txtCarBrand = new TextBox();
             dgvCars = new DataGridView();
             tabPage1 = new TabPage();
+            comboBox1 = new ComboBox();
             Telefoninumber = new Label();
             label1 = new Label();
             txtOwnerPhone = new TextBox();
@@ -70,6 +69,17 @@ namespace AutodjaOmanikud
             btnUpdateOwner = new Button();
             btnAddOwner = new Button();
             tabControl1 = new TabControl();
+            tabPage4 = new TabPage();
+            label10 = new Label();
+            S = new Label();
+            btnClearSType = new Button();
+            txtSTypePrice = new TextBox();
+            txtSTypeName = new TextBox();
+            btnDeleteSType = new Button();
+            btnUpdateSType = new Button();
+            btnAddSType = new Button();
+            dgvServiceTypes = new DataGridView();
+            comboLanguage = new ComboBox();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServices).BeginInit();
             tabPage2.SuspendLayout();
@@ -77,168 +87,111 @@ namespace AutodjaOmanikud
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvOwners).BeginInit();
             tabControl1.SuspendLayout();
+            tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvServiceTypes).BeginInit();
             SuspendLayout();
             // 
             // tabPage3
             // 
             tabPage3.BackColor = Color.LavenderBlush;
+            tabPage3.Controls.Add(cbteenus);
+            tabPage3.Controls.Add(label6);
+            tabPage3.Controls.Add(cmbServiceOwner);
             tabPage3.Controls.Add(label8);
             tabPage3.Controls.Add(searchtextbox);
             tabPage3.Controls.Add(label13);
             tabPage3.Controls.Add(datetimepickertime);
             tabPage3.Controls.Add(label11);
             tabPage3.Controls.Add(cbauto);
-            tabPage3.Controls.Add(label7);
-            tabPage3.Controls.Add(label6);
             tabPage3.Controls.Add(btnClearService);
             tabPage3.Controls.Add(btnDeleteService);
-            tabPage3.Controls.Add(btnUpdateService);
             tabPage3.Controls.Add(btnAddService);
-            tabPage3.Controls.Add(txtServicePrice);
-            tabPage3.Controls.Add(txtServiceName);
             tabPage3.Controls.Add(dgvServices);
-            tabPage3.Location = new Point(4, 24);
+            resources.ApplyResources(tabPage3, "tabPage3");
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(705, 398);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Service";
+            // 
+            // cbteenus
+            // 
+            cbteenus.BackColor = Color.WhiteSmoke;
+            cbteenus.FormattingEnabled = true;
+            resources.ApplyResources(cbteenus, "cbteenus");
+            cbteenus.Name = "cbteenus";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(label6, "label6");
+            label6.Name = "label6";
+            // 
+            // cmbServiceOwner
+            // 
+            cmbServiceOwner.BackColor = Color.WhiteSmoke;
+            cmbServiceOwner.FormattingEnabled = true;
+            resources.ApplyResources(cmbServiceOwner, "cmbServiceOwner");
+            cmbServiceOwner.Name = "cmbServiceOwner";
+            cmbServiceOwner.Click += CmbServiceOwner_SelectedIndexChanged;
             // 
             // label8
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(615, 162);
+            resources.ApplyResources(label8, "label8");
             label8.Name = "label8";
-            label8.Size = new Size(71, 15);
-            label8.TabIndex = 15;
-            label8.Text = "Auto otsing";
             // 
             // searchtextbox
             // 
             searchtextbox.BackColor = Color.WhiteSmoke;
-            searchtextbox.Location = new Point(599, 180);
+            resources.ApplyResources(searchtextbox, "searchtextbox");
             searchtextbox.Name = "searchtextbox";
-            searchtextbox.Size = new Size(100, 23);
-            searchtextbox.TabIndex = 14;
             // 
             // label13
             // 
-            label13.AutoSize = true;
-            label13.Location = new Point(307, 138);
+            resources.ApplyResources(label13, "label13");
             label13.Name = "label13";
-            label13.Size = new Size(110, 15);
-            label13.TabIndex = 13;
-            label13.Text = "Töö lõppemise aeg";
             // 
             // datetimepickertime
             // 
-            datetimepickertime.Location = new Point(418, 132);
+            resources.ApplyResources(datetimepickertime, "datetimepickertime");
             datetimepickertime.Name = "datetimepickertime";
-            datetimepickertime.Size = new Size(121, 23);
-            datetimepickertime.TabIndex = 11;
             // 
             // label11
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(379, 106);
+            resources.ApplyResources(label11, "label11");
             label11.Name = "label11";
-            label11.Size = new Size(34, 15);
-            label11.TabIndex = 10;
-            label11.Text = "Auto";
             // 
             // cbauto
             // 
             cbauto.BackColor = Color.WhiteSmoke;
             cbauto.FormattingEnabled = true;
-            cbauto.Location = new Point(418, 103);
+            resources.ApplyResources(cbauto, "cbauto");
             cbauto.Name = "cbauto";
-            cbauto.Size = new Size(121, 23);
-            cbauto.TabIndex = 9;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(362, 80);
-            label7.Name = "label7";
-            label7.Size = new Size(76, 15);
-            label7.TabIndex = 8;
-            label7.Text = "Service hind";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(348, 53);
-            label6.Name = "label6";
-            label6.Size = new Size(93, 15);
-            label6.TabIndex = 7;
-            label6.Text = "Service pealkiri";
             // 
             // btnClearService
             // 
-            btnClearService.Location = new Point(6, 127);
+            resources.ApplyResources(btnClearService, "btnClearService");
             btnClearService.Name = "btnClearService";
-            btnClearService.Size = new Size(102, 23);
-            btnClearService.TabIndex = 6;
-            btnClearService.Text = "Clear service";
             btnClearService.UseVisualStyleBackColor = true;
             btnClearService.Click += btnClearService_Click;
             // 
             // btnDeleteService
             // 
-            btnDeleteService.Location = new Point(3, 98);
+            resources.ApplyResources(btnDeleteService, "btnDeleteService");
             btnDeleteService.Name = "btnDeleteService";
-            btnDeleteService.Size = new Size(105, 23);
-            btnDeleteService.TabIndex = 5;
-            btnDeleteService.Text = "Kustuta service";
             btnDeleteService.UseVisualStyleBackColor = true;
             btnDeleteService.Click += btnDeleteService_Click;
-            // 
-            // btnUpdateService
-            // 
-            btnUpdateService.Location = new Point(3, 72);
-            btnUpdateService.Name = "btnUpdateService";
-            btnUpdateService.Size = new Size(105, 23);
-            btnUpdateService.TabIndex = 4;
-            btnUpdateService.Text = "Uuenda service";
-            btnUpdateService.UseVisualStyleBackColor = true;
-            btnUpdateService.Click += btnUpdateService_Click;
             // 
             // btnAddService
             // 
             btnAddService.BackColor = Color.Transparent;
             btnAddService.ForeColor = SystemColors.ControlText;
-            btnAddService.Location = new Point(3, 44);
+            resources.ApplyResources(btnAddService, "btnAddService");
             btnAddService.Name = "btnAddService";
-            btnAddService.Size = new Size(105, 23);
-            btnAddService.TabIndex = 3;
-            btnAddService.Text = "Lisa service";
             btnAddService.UseVisualStyleBackColor = false;
             btnAddService.Click += btnAddService_Click;
-            // 
-            // txtServicePrice
-            // 
-            txtServicePrice.BackColor = Color.WhiteSmoke;
-            txtServicePrice.Location = new Point(439, 74);
-            txtServicePrice.Name = "txtServicePrice";
-            txtServicePrice.Size = new Size(100, 23);
-            txtServicePrice.TabIndex = 2;
-            // 
-            // txtServiceName
-            // 
-            txtServiceName.BackColor = Color.WhiteSmoke;
-            txtServiceName.Location = new Point(439, 45);
-            txtServiceName.Name = "txtServiceName";
-            txtServiceName.Size = new Size(100, 23);
-            txtServiceName.TabIndex = 1;
             // 
             // dgvServices
             // 
             dgvServices.BackgroundColor = Color.Snow;
             dgvServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvServices.Location = new Point(6, 209);
+            resources.ApplyResources(dgvServices, "dgvServices");
             dgvServices.Name = "dgvServices";
-            dgvServices.Size = new Size(693, 183);
-            dgvServices.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -256,86 +209,54 @@ namespace AutodjaOmanikud
             tabPage2.Controls.Add(txtCarModel);
             tabPage2.Controls.Add(txtCarBrand);
             tabPage2.Controls.Add(dgvCars);
-            tabPage2.Location = new Point(4, 24);
+            resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(705, 398);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Auto";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(336, 122);
+            resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
-            label5.Size = new Size(78, 15);
-            label5.TabIndex = 12;
-            label5.Text = "Auto omanik";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(310, 96);
+            resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
-            label4.Size = new Size(132, 15);
-            label4.TabIndex = 11;
-            label4.Text = "Registreerimisnumber";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(356, 68);
+            resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            label3.Size = new Size(72, 15);
-            label3.TabIndex = 10;
-            label3.Text = "Auto mudel";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(356, 39);
+            resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
-            label2.Size = new Size(66, 15);
-            label2.TabIndex = 9;
-            label2.Text = "Auto mark";
             // 
             // btnClearCar
             // 
-            btnClearCar.Location = new Point(6, 117);
+            resources.ApplyResources(btnClearCar, "btnClearCar");
             btnClearCar.Name = "btnClearCar";
-            btnClearCar.Size = new Size(93, 24);
-            btnClearCar.TabIndex = 8;
-            btnClearCar.Text = "Clear auto";
             btnClearCar.UseVisualStyleBackColor = true;
             btnClearCar.Click += btnClearCar_Click;
             // 
             // btnDeleteCar
             // 
-            btnDeleteCar.Location = new Point(6, 88);
+            resources.ApplyResources(btnDeleteCar, "btnDeleteCar");
             btnDeleteCar.Name = "btnDeleteCar";
-            btnDeleteCar.Size = new Size(93, 23);
-            btnDeleteCar.TabIndex = 7;
-            btnDeleteCar.Text = "Kustuta auto";
             btnDeleteCar.UseVisualStyleBackColor = true;
             btnDeleteCar.Click += btnDeleteCar_Click;
             // 
             // btnUpdateCar
             // 
-            btnUpdateCar.Location = new Point(6, 59);
+            resources.ApplyResources(btnUpdateCar, "btnUpdateCar");
             btnUpdateCar.Name = "btnUpdateCar";
-            btnUpdateCar.Size = new Size(93, 24);
-            btnUpdateCar.TabIndex = 6;
-            btnUpdateCar.Text = "Uuenda auto";
             btnUpdateCar.UseVisualStyleBackColor = true;
             btnUpdateCar.Click += btnUpdateCar_Click;
             // 
             // btnAddCar
             // 
-            btnAddCar.Location = new Point(6, 30);
+            resources.ApplyResources(btnAddCar, "btnAddCar");
             btnAddCar.Name = "btnAddCar";
-            btnAddCar.Size = new Size(93, 24);
-            btnAddCar.TabIndex = 5;
-            btnAddCar.Text = "Lisa auto";
             btnAddCar.UseVisualStyleBackColor = true;
             btnAddCar.Click += btnAddCar_Click;
             // 
@@ -343,48 +264,39 @@ namespace AutodjaOmanikud
             // 
             cmbCarOwner.BackColor = Color.WhiteSmoke;
             cmbCarOwner.FormattingEnabled = true;
-            cmbCarOwner.Location = new Point(418, 118);
+            resources.ApplyResources(cmbCarOwner, "cmbCarOwner");
             cmbCarOwner.Name = "cmbCarOwner";
-            cmbCarOwner.Size = new Size(121, 23);
-            cmbCarOwner.TabIndex = 4;
             // 
             // txtCarRegNumber
             // 
             txtCarRegNumber.BackColor = Color.WhiteSmoke;
-            txtCarRegNumber.Location = new Point(439, 89);
+            resources.ApplyResources(txtCarRegNumber, "txtCarRegNumber");
             txtCarRegNumber.Name = "txtCarRegNumber";
-            txtCarRegNumber.Size = new Size(100, 23);
-            txtCarRegNumber.TabIndex = 3;
             // 
             // txtCarModel
             // 
             txtCarModel.BackColor = Color.WhiteSmoke;
-            txtCarModel.Location = new Point(439, 60);
+            resources.ApplyResources(txtCarModel, "txtCarModel");
             txtCarModel.Name = "txtCarModel";
-            txtCarModel.Size = new Size(100, 23);
-            txtCarModel.TabIndex = 2;
             // 
             // txtCarBrand
             // 
             txtCarBrand.BackColor = Color.WhiteSmoke;
-            txtCarBrand.Location = new Point(439, 31);
+            resources.ApplyResources(txtCarBrand, "txtCarBrand");
             txtCarBrand.Name = "txtCarBrand";
-            txtCarBrand.Size = new Size(100, 23);
-            txtCarBrand.TabIndex = 1;
             // 
             // dgvCars
             // 
             dgvCars.BackgroundColor = Color.Snow;
             dgvCars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCars.Location = new Point(6, 183);
+            resources.ApplyResources(dgvCars, "dgvCars");
             dgvCars.Name = "dgvCars";
-            dgvCars.Size = new Size(693, 209);
-            dgvCars.TabIndex = 0;
             // 
             // tabPage1
             // 
             tabPage1.BackColor = Color.LavenderBlush;
-            tabPage1.BackgroundImageLayout = ImageLayout.Zoom;
+            resources.ApplyResources(tabPage1, "tabPage1");
+            tabPage1.Controls.Add(comboBox1);
             tabPage1.Controls.Add(Telefoninumber);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(txtOwnerPhone);
@@ -394,96 +306,68 @@ namespace AutodjaOmanikud
             tabPage1.Controls.Add(btnDeleteOwner);
             tabPage1.Controls.Add(btnUpdateOwner);
             tabPage1.Controls.Add(btnAddOwner);
-            tabPage1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 186);
-            tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(705, 398);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Omanik";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            resources.ApplyResources(comboBox1, "comboBox1");
+            comboBox1.Name = "comboBox1";
             // 
             // Telefoninumber
             // 
-            Telefoninumber.AutoSize = true;
-            Telefoninumber.Location = new Point(342, 83);
+            resources.ApplyResources(Telefoninumber, "Telefoninumber");
             Telefoninumber.Name = "Telefoninumber";
-            Telefoninumber.Size = new Size(96, 15);
-            Telefoninumber.TabIndex = 8;
-            Telefoninumber.Text = "Telefoninumber";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(388, 55);
+            resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            label1.Size = new Size(33, 15);
-            label1.TabIndex = 7;
-            label1.Text = "Nimi";
             // 
             // txtOwnerPhone
             // 
             txtOwnerPhone.BackColor = Color.WhiteSmoke;
-            txtOwnerPhone.Location = new Point(439, 75);
+            resources.ApplyResources(txtOwnerPhone, "txtOwnerPhone");
             txtOwnerPhone.Name = "txtOwnerPhone";
-            txtOwnerPhone.Size = new Size(100, 23);
-            txtOwnerPhone.TabIndex = 6;
             // 
             // txtOwnerFullName
             // 
             txtOwnerFullName.BackColor = Color.WhiteSmoke;
-            txtOwnerFullName.Location = new Point(439, 47);
+            resources.ApplyResources(txtOwnerFullName, "txtOwnerFullName");
             txtOwnerFullName.Name = "txtOwnerFullName";
-            txtOwnerFullName.Size = new Size(100, 23);
-            txtOwnerFullName.TabIndex = 5;
             // 
             // dgvOwners
             // 
             dgvOwners.BackgroundColor = Color.Snow;
             dgvOwners.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvOwners.Location = new Point(6, 185);
+            resources.ApplyResources(dgvOwners, "dgvOwners");
             dgvOwners.Name = "dgvOwners";
-            dgvOwners.Size = new Size(693, 207);
-            dgvOwners.TabIndex = 4;
             // 
             // btnClearOwner
             // 
-            btnClearOwner.Location = new Point(3, 120);
+            resources.ApplyResources(btnClearOwner, "btnClearOwner");
             btnClearOwner.Name = "btnClearOwner";
-            btnClearOwner.Size = new Size(101, 23);
-            btnClearOwner.TabIndex = 3;
-            btnClearOwner.Text = "Clear omanik";
             btnClearOwner.UseVisualStyleBackColor = true;
             btnClearOwner.Click += btnClearOwner_Click;
             // 
             // btnDeleteOwner
             // 
-            btnDeleteOwner.Location = new Point(3, 91);
+            resources.ApplyResources(btnDeleteOwner, "btnDeleteOwner");
             btnDeleteOwner.Name = "btnDeleteOwner";
-            btnDeleteOwner.Size = new Size(101, 23);
-            btnDeleteOwner.TabIndex = 2;
-            btnDeleteOwner.Text = "Kustuta omanik";
             btnDeleteOwner.UseVisualStyleBackColor = true;
             btnDeleteOwner.Click += btnDeleteOwner_Click;
             // 
             // btnUpdateOwner
             // 
-            btnUpdateOwner.BackgroundImage = (Image)resources.GetObject("btnUpdateOwner.BackgroundImage");
-            btnUpdateOwner.BackgroundImageLayout = ImageLayout.Center;
-            btnUpdateOwner.Location = new Point(0, 62);
+            resources.ApplyResources(btnUpdateOwner, "btnUpdateOwner");
             btnUpdateOwner.Name = "btnUpdateOwner";
-            btnUpdateOwner.Size = new Size(104, 23);
-            btnUpdateOwner.TabIndex = 1;
-            btnUpdateOwner.Text = "Uuenda omanik";
             btnUpdateOwner.UseVisualStyleBackColor = true;
             btnUpdateOwner.Click += btnUpdateOwner_Click;
             // 
             // btnAddOwner
             // 
-            btnAddOwner.Location = new Point(3, 33);
+            resources.ApplyResources(btnAddOwner, "btnAddOwner");
             btnAddOwner.Name = "btnAddOwner";
-            btnAddOwner.Size = new Size(101, 23);
-            btnAddOwner.TabIndex = 0;
-            btnAddOwner.Text = "Lisa omanik";
             btnAddOwner.UseVisualStyleBackColor = true;
             btnAddOwner.Click += btnAddOwner_Click;
             // 
@@ -491,23 +375,98 @@ namespace AutodjaOmanikud
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 186);
-            tabControl1.Location = new Point(12, 12);
+            resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(713, 426);
-            tabControl1.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            tabPage4.BackColor = Color.LavenderBlush;
+            tabPage4.Controls.Add(label10);
+            tabPage4.Controls.Add(S);
+            tabPage4.Controls.Add(btnClearSType);
+            tabPage4.Controls.Add(txtSTypePrice);
+            tabPage4.Controls.Add(txtSTypeName);
+            tabPage4.Controls.Add(btnDeleteSType);
+            tabPage4.Controls.Add(btnUpdateSType);
+            tabPage4.Controls.Add(btnAddSType);
+            tabPage4.Controls.Add(dgvServiceTypes);
+            resources.ApplyResources(tabPage4, "tabPage4");
+            tabPage4.Name = "tabPage4";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(label10, "label10");
+            label10.Name = "label10";
+            // 
+            // S
+            // 
+            resources.ApplyResources(S, "S");
+            S.Name = "S";
+            // 
+            // btnClearSType
+            // 
+            resources.ApplyResources(btnClearSType, "btnClearSType");
+            btnClearSType.Name = "btnClearSType";
+            btnClearSType.UseVisualStyleBackColor = true;
+            btnClearSType.Click += btnClearSType_Click;
+            // 
+            // txtSTypePrice
+            // 
+            txtSTypePrice.BackColor = Color.WhiteSmoke;
+            resources.ApplyResources(txtSTypePrice, "txtSTypePrice");
+            txtSTypePrice.Name = "txtSTypePrice";
+            // 
+            // txtSTypeName
+            // 
+            txtSTypeName.BackColor = Color.WhiteSmoke;
+            resources.ApplyResources(txtSTypeName, "txtSTypeName");
+            txtSTypeName.Name = "txtSTypeName";
+            // 
+            // btnDeleteSType
+            // 
+            resources.ApplyResources(btnDeleteSType, "btnDeleteSType");
+            btnDeleteSType.Name = "btnDeleteSType";
+            btnDeleteSType.UseVisualStyleBackColor = true;
+            btnDeleteSType.Click += btnDeleteSType_Click;
+            // 
+            // btnUpdateSType
+            // 
+            resources.ApplyResources(btnUpdateSType, "btnUpdateSType");
+            btnUpdateSType.Name = "btnUpdateSType";
+            btnUpdateSType.UseVisualStyleBackColor = true;
+            btnUpdateSType.Click += btnUpdateSType_Click;
+            // 
+            // btnAddSType
+            // 
+            resources.ApplyResources(btnAddSType, "btnAddSType");
+            btnAddSType.Name = "btnAddSType";
+            btnAddSType.UseVisualStyleBackColor = true;
+            btnAddSType.Click += btnAddSType_Click;
+            // 
+            // dgvServiceTypes
+            // 
+            dgvServiceTypes.BackgroundColor = Color.Snow;
+            dgvServiceTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(dgvServiceTypes, "dgvServiceTypes");
+            dgvServiceTypes.Name = "dgvServiceTypes";
+            // 
+            // comboLanguage
+            // 
+            comboLanguage.FormattingEnabled = true;
+            resources.ApplyResources(comboLanguage, "comboLanguage");
+            comboLanguage.Name = "comboLanguage";
+            comboLanguage.SelectedIndexChanged += comboLanguage_SelectedIndexChanged;
             // 
             // Autoteenindus
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            Controls.Add(comboLanguage);
             Controls.Add(tabControl1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Autoteenindus";
-            Text = "Autoteenindus";
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvServices).EndInit();
@@ -518,6 +477,9 @@ namespace AutodjaOmanikud
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvOwners).EndInit();
             tabControl1.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvServiceTypes).EndInit();
             ResumeLayout(false);
         }
 
@@ -525,14 +487,9 @@ namespace AutodjaOmanikud
         private TabPage tabPage3;
         private Label label11;
         private ComboBox cbauto;
-        private Label label7;
-        private Label label6;
         private Button btnClearService;
         private Button btnDeleteService;
-        private Button btnUpdateService;
         private Button btnAddService;
-        private TextBox txtServicePrice;
-        private TextBox txtServiceName;
         private DataGridView dgvServices;
         private TabPage tabPage2;
         private Label label5;
@@ -563,5 +520,20 @@ namespace AutodjaOmanikud
         private DateTimePicker datetimepickertime;
         private Label label8;
         private TextBox searchtextbox;
+        private ComboBox cmbServiceOwner;
+        private TabPage tabPage4;
+        private DataGridView dgvServiceTypes;
+        private Button btnClearSType;
+        private TextBox txtSTypePrice;
+        private TextBox txtSTypeName;
+        private Button btnDeleteSType;
+        private Button btnUpdateSType;
+        private Button btnAddSType;
+        private Label label10;
+        private Label S;
+        private ComboBox cbteenus;
+        private Label label6;
+        private ComboBox comboBox1;
+        private ComboBox comboLanguage;
     }
 }
