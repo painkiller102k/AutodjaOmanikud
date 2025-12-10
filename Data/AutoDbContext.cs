@@ -13,7 +13,7 @@ namespace AutodjaOmanikud
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=AutoDb;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=AutoDatabase;Trusted_Connection=True;");
             }
         }
 
