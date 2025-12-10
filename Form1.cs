@@ -370,29 +370,46 @@ namespace AutodjaOmanikud
         private void LoadServices(string search = "")
         {
             using var context = new AutoDbContext();
-            var q = context.Services.Include(s => s.Car).ThenInclude(c => c.Owner)
-                                    .Include(s => s.ServiceType)
-                                    .AsQueryable();
+
+            var query = context.Services
+                .Include(s => s.Car).ThenInclude(c => c.Owner)
+                .Include(s => s.ServiceType)
+                .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search))
-                q = q.Where(s => s.ServiceType.Name.Contains(search) ||
-                                 s.Car.Brand.Contains(search) ||
-                                 s.Car.Model.Contains(search) ||
-                                 s.Car.Owner.FullName.Contains(search));
+            {
+                search = search.ToLower();
+                query = query.Where(s =>
+                    s.Car.Brand.ToLower().Contains(search) ||
+                    s.Car.Model.ToLower().Contains(search) ||
+                    s.Car.RegistrationNumber.ToLower().Contains(search) ||
+                    s.ServiceType.Name.ToLower().Contains(search) ||
+                    s.Car.Owner.FullName.ToLower().Contains(search)
+                );
+            }
 
-            dgvServices.DataSource = q
+            dgvServices.DataSource = query
                 .Select(s => new
                 {
                     s.Id,
                     Owner = s.Car.Owner.FullName,
-                    Car = $"{s.Car.Brand} {s.Car.Model} ({s.Car.RegistrationNumber})",
+                    Car = s.Car.Brand + " " + s.Car.Model + $" ({s.Car.RegistrationNumber})",
                     Service = s.ServiceType.Name,
                     Price = s.ServiceType.Price,
-                    Finish = s.Time.ToString("HH:mm dd.MM.yyyy"),
+                    Paid = s.IsPaid ? "Yes" : "No",
+                    Finish = s.Time.ToString("dd.MM.yyyy HH:mm"),
+
                     s.CarId,
                     s.ServiceTypeId
-                }).ToList();
+                })
+                .ToList();
+
+            dgvServices.Columns["Id"].Visible = false;
+            dgvServices.Columns["CarId"].Visible = false;
+            dgvServices.Columns["ServiceTypeId"].Visible = false;
         }
+
+
 
         private void ClearServiceFields()
         {
@@ -416,9 +433,14 @@ namespace AutodjaOmanikud
             cbauto.SelectedValue = carId;
             cbteenus.SelectedValue = typeId;
 
+            chkPaid.Checked = dgvServices.CurrentRow.Cells["Paid"].Value.ToString() == "Yes";
+
             DateTime.TryParse(dgvServices.CurrentRow.Cells["Finish"].Value.ToString(), out DateTime dt);
             datetimepickertime.Value = dt;
         }
+
+
+
 
         private void btnAddService_Click(object sender, EventArgs e)
         {
@@ -429,13 +451,15 @@ namespace AutodjaOmanikud
             {
                 CarId = (int)cbauto.SelectedValue,
                 ServiceTypeId = (int)cbteenus.SelectedValue,
-                Time = datetimepickertime.Value
+                Time = datetimepickertime.Value,
+                IsPaid = chkPaid.Checked
             });
             context.SaveChanges();
 
             ClearServiceFields();
             LoadServices();
         }
+
 
         private void btnDeleteService_Click(object sender, EventArgs e)
         {
@@ -453,7 +477,45 @@ namespace AutodjaOmanikud
             LoadServices();
         }
 
+        private void btnCalcTotal_Click(object sender, EventArgs e)
+        {
+            if (cmbServiceOwner.SelectedValue == null) return;
+
+            int ownerId = (int)cmbServiceOwner.SelectedValue;
+
+            using var context = new AutoDbContext();
+            var total = context.Services
+                .Include(s => s.Car).ThenInclude(c => c.Owner)
+                .Where(s => s.Car.OwnerId == ownerId && s.IsPaid == false) // считаем только неоплаченные
+                .Sum(s => s.ServiceType.Price);
+
+            lblTotal.Text = $": {total} €";
+        }
+
+        private void btnUpdateService_Click(object sender, EventArgs e)
+        {
+            if (dgvServices.CurrentRow == null) return;
+
+            using var context = new AutoDbContext();
+
+            int serviceId = (int)dgvServices.CurrentRow.Cells["Id"].Value;
+            var service = context.Services.Find(serviceId);
+            if (service != null)
+            {
+                service.CarId = (int)cbauto.SelectedValue;
+                service.ServiceTypeId = (int)cbteenus.SelectedValue;
+                service.Time = datetimepickertime.Value;
+                service.IsPaid = chkPaid.Checked;
+
+                context.SaveChanges();
+            }
+
+            LoadServices();
+        }
+
+
         private void btnClearService_Click(object sender, EventArgs e) => ClearServiceFields();
+
 
     }
 }
