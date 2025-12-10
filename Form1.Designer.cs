@@ -30,6 +30,10 @@ namespace AutodjaOmanikud
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Autoteenindus));
             tabPage3 = new TabPage();
+            btnUpdateService = new Button();
+            btnCalcTotal = new Button();
+            lblTotal = new Label();
+            chkPaid = new CheckBox();
             cbteenus = new ComboBox();
             label6 = new Label();
             cmbServiceOwner = new ComboBox();
@@ -58,7 +62,6 @@ namespace AutodjaOmanikud
             txtCarBrand = new TextBox();
             dgvCars = new DataGridView();
             tabPage1 = new TabPage();
-            comboBox1 = new ComboBox();
             Telefoninumber = new Label();
             label1 = new Label();
             txtOwnerPhone = new TextBox();
@@ -94,6 +97,10 @@ namespace AutodjaOmanikud
             // tabPage3
             // 
             tabPage3.BackColor = Color.LavenderBlush;
+            tabPage3.Controls.Add(btnUpdateService);
+            tabPage3.Controls.Add(btnCalcTotal);
+            tabPage3.Controls.Add(lblTotal);
+            tabPage3.Controls.Add(chkPaid);
             tabPage3.Controls.Add(cbteenus);
             tabPage3.Controls.Add(label6);
             tabPage3.Controls.Add(cmbServiceOwner);
@@ -109,6 +116,31 @@ namespace AutodjaOmanikud
             tabPage3.Controls.Add(dgvServices);
             resources.ApplyResources(tabPage3, "tabPage3");
             tabPage3.Name = "tabPage3";
+            // 
+            // btnUpdateService
+            // 
+            resources.ApplyResources(btnUpdateService, "btnUpdateService");
+            btnUpdateService.Name = "btnUpdateService";
+            btnUpdateService.UseVisualStyleBackColor = true;
+            btnUpdateService.Click += btnUpdateService_Click;
+            // 
+            // btnCalcTotal
+            // 
+            resources.ApplyResources(btnCalcTotal, "btnCalcTotal");
+            btnCalcTotal.Name = "btnCalcTotal";
+            btnCalcTotal.UseVisualStyleBackColor = true;
+            btnCalcTotal.Click += btnCalcTotal_Click;
+            // 
+            // lblTotal
+            // 
+            resources.ApplyResources(lblTotal, "lblTotal");
+            lblTotal.Name = "lblTotal";
+            // 
+            // chkPaid
+            // 
+            resources.ApplyResources(chkPaid, "chkPaid");
+            chkPaid.Name = "chkPaid";
+            chkPaid.UseVisualStyleBackColor = true;
             // 
             // cbteenus
             // 
@@ -296,7 +328,6 @@ namespace AutodjaOmanikud
             // 
             tabPage1.BackColor = Color.LavenderBlush;
             resources.ApplyResources(tabPage1, "tabPage1");
-            tabPage1.Controls.Add(comboBox1);
             tabPage1.Controls.Add(Telefoninumber);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(txtOwnerPhone);
@@ -307,12 +338,6 @@ namespace AutodjaOmanikud
             tabPage1.Controls.Add(btnUpdateOwner);
             tabPage1.Controls.Add(btnAddOwner);
             tabPage1.Name = "tabPage1";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            resources.ApplyResources(comboBox1, "comboBox1");
-            comboBox1.Name = "comboBox1";
             // 
             // Telefoninumber
             // 
@@ -533,7 +558,10 @@ namespace AutodjaOmanikud
         private Label S;
         private ComboBox cbteenus;
         private Label label6;
-        private ComboBox comboBox1;
         private ComboBox comboLanguage;
+        private CheckBox chkPaid;
+        private Button btnCalcTotal;
+        private Label lblTotal;
+        private Button btnUpdateService;
     }
 }
