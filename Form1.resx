@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
-    Microsoft ResX Schema
-
+  <!-- 
+    Microsoft ResX Schema 
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-
+    
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -118,13 +118,115 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnUpdateService.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 76</value>
+  </data>
+  <data name="btnUpdateService.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnUpdateService.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="btnUpdateService.Text" xml:space="preserve">
+    <value>Uuenda teenus</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateService.Name" xml:space="preserve">
+    <value>btnUpdateService</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateService.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateService.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateService.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnCalcTotal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>633, 176</value>
+  </data>
+  <data name="btnCalcTotal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 28</value>
+  </data>
+  <data name="btnCalcTotal.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="btnCalcTotal.Text" xml:space="preserve">
+    <value>Makse kontrollimine</value>
+  </data>
+  <data name="&gt;&gt;btnCalcTotal.Name" xml:space="preserve">
+    <value>btnCalcTotal</value>
+  </data>
+  <data name="&gt;&gt;btnCalcTotal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCalcTotal.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;btnCalcTotal.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblTotal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblTotal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>633, 158</value>
+  </data>
+  <data name="lblTotal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 15</value>
+  </data>
+  <data name="lblTotal.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="lblTotal.Text" xml:space="preserve">
+    <value>Kokku: 0€</value>
+  </data>
+  <data name="&gt;&gt;lblTotal.Name" xml:space="preserve">
+    <value>lblTotal</value>
+  </data>
+  <data name="&gt;&gt;lblTotal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblTotal.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;lblTotal.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkPaid.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkPaid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>494, 136</value>
+  </data>
+  <data name="chkPaid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 19</value>
+  </data>
+  <data name="chkPaid.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="chkPaid.Text" xml:space="preserve">
+    <value>Makstud</value>
+  </data>
+  <data name="&gt;&gt;chkPaid.Name" xml:space="preserve">
+    <value>chkPaid</value>
+  </data>
+  <data name="&gt;&gt;chkPaid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPaid.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;chkPaid.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="cbteenus.Location" type="System.Drawing.Point, System.Drawing">
     <value>494, 78</value>
   </data>
   <data name="cbteenus.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 23</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cbteenus.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
@@ -138,7 +240,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;cbteenus.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -165,7 +267,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="cmbServiceOwner.Location" type="System.Drawing.Point, System.Drawing">
     <value>494, 49</value>
@@ -186,7 +288,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;cmbServiceOwner.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -213,7 +315,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="searchtextbox.Location" type="System.Drawing.Point, System.Drawing">
     <value>182, 180</value>
@@ -234,7 +336,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;searchtextbox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -261,7 +363,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="datetimepickertime.Location" type="System.Drawing.Point, System.Drawing">
     <value>494, 107</value>
@@ -282,7 +384,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;datetimepickertime.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -309,7 +411,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="cbauto.Location" type="System.Drawing.Point, System.Drawing">
     <value>621, 49</value>
@@ -330,10 +432,10 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;cbauto.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="btnClearService.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 105</value>
+    <value>12, 132</value>
   </data>
   <data name="btnClearService.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 23</value>
@@ -354,10 +456,10 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;btnClearService.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="btnDeleteService.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 77</value>
+    <value>9, 105</value>
   </data>
   <data name="btnDeleteService.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 23</value>
@@ -378,7 +480,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;btnDeleteService.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="btnAddService.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 49</value>
@@ -402,7 +504,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;btnAddService.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
   </data>
   <data name="dgvServices.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 209</value>
@@ -423,7 +525,7 @@
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;dgvServices.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
   </data>
   <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
@@ -433,7 +535,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>768, 360</value>
+    <value>768, 372</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -769,7 +871,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>768, 360</value>
+    <value>768, 372</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -792,27 +894,6 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabPage1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
-  </data>
-  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>617, 70</value>
-  </data>
-  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 23</value>
-  </data>
-  <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
-    <value>comboBox1</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="Telefoninumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -839,7 +920,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;Telefoninumber.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -866,7 +947,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="txtOwnerPhone.Location" type="System.Drawing.Point, System.Drawing">
     <value>439, 75</value>
@@ -887,7 +968,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;txtOwnerPhone.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="txtOwnerFullName.Location" type="System.Drawing.Point, System.Drawing">
     <value>439, 47</value>
@@ -908,7 +989,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;txtOwnerFullName.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="dgvOwners.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 185</value>
@@ -929,7 +1010,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;dgvOwners.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="btnClearOwner.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 120</value>
@@ -953,7 +1034,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;btnClearOwner.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="btnDeleteOwner.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 91</value>
@@ -977,7 +1058,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;btnDeleteOwner.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="btnUpdateOwner.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1473,7 +1554,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;btnUpdateOwner.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="btnAddOwner.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 33</value>
@@ -1497,7 +1578,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;btnAddOwner.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
@@ -1746,7 +1827,7 @@
     <value>4, 24</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>768, 360</value>
+    <value>768, 372</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1811,12 +1892,12 @@
   <data name="&gt;&gt;comboLanguage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 15</value>
   </data>
