@@ -34,7 +34,7 @@ namespace AutodjaOmanikud
             comboLanguage.SelectedIndexChanged += comboLanguage_SelectedIndexChanged;
         }
 
-        private void LoadOwners()
+        private void LoadOwners() //загружает владельцев
         {
             using var context = new AutoDbContext();
             dgvOwners.DataSource = context.Owners
@@ -80,18 +80,15 @@ namespace AutodjaOmanikud
 
         private void ChangeLanguage(string lang)
         {
-            // Сохраняем выбранный язык в Settings
             Properties.Settings.Default.UserLanguage = lang;
             Properties.Settings.Default.Save();
 
-            // Меняем текущую культуру
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
             Thread.CurrentThread.CurrentCulture = new CultureInfo(lang);
 
-            // Применяем ресурсы к форме и всем контролам
             var res = new ComponentResourceManager(typeof(Autoteenindus));
             ApplyResourcesToControl(this, res);
-            res.ApplyResources(this, "$this"); // заголовок формы
+            res.ApplyResources(this, "$this");
         }
 
         private void comboLanguage_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,7 +110,7 @@ namespace AutodjaOmanikud
             txtOwnerPhone.Clear();
         }
 
-        private void DgvOwners_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvOwners_CellClick(object sender, DataGridViewCellEventArgs e) //отображение строчки
         {
             if (dgvOwners.CurrentRow == null) return;
             txtOwnerFullName.Text = dgvOwners.CurrentRow.Cells["FullName"].Value.ToString();
@@ -169,8 +166,8 @@ namespace AutodjaOmanikud
 
         private void btnClearOwner_Click(object sender, EventArgs e) => ClearOwnerFields();
 
-        // =================== Cars ===================
-        private void LoadCars()
+        //Cars
+        private void LoadCars() //загрузка авто
         {
             using var context = new AutoDbContext();
             dgvCars.DataSource = context.Cars.Include(c => c.Owner)
@@ -197,7 +194,7 @@ namespace AutodjaOmanikud
             cmbCarOwner.SelectedIndex = -1;
         }
 
-        private void DgvCars_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvCars_CellClick(object sender, DataGridViewCellEventArgs e) //строчка и показывает в текстбоксах
         {
             if (dgvCars.CurrentRow == null) return;
 
@@ -263,7 +260,7 @@ namespace AutodjaOmanikud
 
         private void btnClearCar_Click(object sender, EventArgs e) => ClearCarFields();
 
-        // =================== Service Types ===================
+        //Service Types
         private void LoadServiceTypes()
         {
             using var context = new AutoDbContext();
@@ -281,7 +278,6 @@ namespace AutodjaOmanikud
             txtSTypeName.Clear();
             txtSTypePrice.Clear();
         }
-
         private void DgvServiceTypes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvServiceTypes.CurrentRow == null) return;
@@ -337,10 +333,9 @@ namespace AutodjaOmanikud
             ClearSTypeFields();
             LoadServiceTypes();
         }
-
         private void btnClearSType_Click(object sender, EventArgs e) => ClearSTypeFields();
 
-        // =================== Services ===================
+        //Service
         private void LoadServiceOwners()
         {
             using var context = new AutoDbContext();
@@ -408,9 +403,6 @@ namespace AutodjaOmanikud
             dgvServices.Columns["CarId"].Visible = false;
             dgvServices.Columns["ServiceTypeId"].Visible = false;
         }
-
-
-
         private void ClearServiceFields()
         {
             cmbServiceOwner.SelectedIndex = -1;
@@ -439,9 +431,6 @@ namespace AutodjaOmanikud
             datetimepickertime.Value = dt;
         }
 
-
-
-
         private void btnAddService_Click(object sender, EventArgs e)
         {
             if (cbauto.SelectedValue == null || cbteenus.SelectedValue == null) return;
@@ -452,14 +441,13 @@ namespace AutodjaOmanikud
                 CarId = (int)cbauto.SelectedValue,
                 ServiceTypeId = (int)cbteenus.SelectedValue,
                 Time = datetimepickertime.Value,
-                IsPaid = chkPaid.Checked
+                IsPaid = chkPaid.Checked // maksud või ei maksud
             });
             context.SaveChanges();
 
             ClearServiceFields();
             LoadServices();
         }
-
 
         private void btnDeleteService_Click(object sender, EventArgs e)
         {
@@ -476,17 +464,17 @@ namespace AutodjaOmanikud
             ClearServiceFields();
             LoadServices();
         }
-
+            
         private void btnCalcTotal_Click(object sender, EventArgs e)
         {
             if (cmbServiceOwner.SelectedValue == null) return;
 
-            int ownerId = (int)cmbServiceOwner.SelectedValue;
+            int ownerId = (int)cmbServiceOwner.SelectedValue; 
 
             using var context = new AutoDbContext();
             var total = context.Services
                 .Include(s => s.Car).ThenInclude(c => c.Owner)
-                .Where(s => s.Car.OwnerId == ownerId && s.IsPaid == false) // считаем только неоплаченные
+                .Where(s => s.Car.OwnerId == ownerId && s.IsPaid == false)
                 .Sum(s => s.ServiceType.Price);
 
             lblTotal.Text = $": {total} €";
@@ -513,9 +501,6 @@ namespace AutodjaOmanikud
             LoadServices();
         }
 
-
         private void btnClearService_Click(object sender, EventArgs e) => ClearServiceFields();
-
-
     }
 }
